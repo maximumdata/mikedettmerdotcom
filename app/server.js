@@ -2,6 +2,7 @@ let express = require('express'),
     path = require('path'),
     http = require('http'),
     favicon = require('serve-favicon'),
+    database = require('../config/db.js'),
     routes = require('./routes/router.js');
 
 
