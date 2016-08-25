@@ -3,11 +3,15 @@ let express = require('express'),
     http = require('http'),
     favicon = require('serve-favicon'),
     database = require('../config/db.js'),
-    routes = require('./routes/router.js');
+    routes = require('./routes/router.js'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    jwt = require('jwt-simple'),
+    morgan = require('morgan');
 
 
 const app = express();
-
+app.use(morgan('dev'));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
@@ -15,7 +19,15 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
+
+require('../config/passport')(passport);
 
 app.use('/', routes);
 
