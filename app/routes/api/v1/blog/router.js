@@ -25,7 +25,6 @@ router.put('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 });
 
 router.delete('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  console.log(req.body);
   if (!req.body.id) { return res.send(500).status({ success: false, msg: 'No ID supplied' }); }
   Post.findByIdAndRemove(req.body.id, (err, post) => {
     if (err) { return res.status(500).send({ success: false, msg: 'Unknown error occured, check err property for details', err: err }); }
