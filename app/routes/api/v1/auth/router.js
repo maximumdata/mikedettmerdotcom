@@ -38,7 +38,12 @@ router.get('/register', (req, res) => {
 });
 
 router.delete('/register', (req, res) => {
-  //delete all users
+  User.remove({}, (err) => {
+    if (err) { return res.status(500).send({ success: false, msg: 'Failed to delete users, check err property for details', err: err}); }
+    else {
+      res.send({ success: true, msg: 'Deleted all users'});
+    }
+  });
 });
 
 router.post('/', (req, res) => {
