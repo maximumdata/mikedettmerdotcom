@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
       } else {
         let newUser = new User({
           name: req.body.name,
-          password: req.body.name
+          password: req.body.password
         });
 
         newUser.save((err) => {
@@ -38,12 +38,13 @@ router.get('/register', (req, res) => {
 });
 
 router.delete('/register', (req, res) => {
-  User.remove({}, (err) => {
-    if (err) { return res.status(500).send({ success: false, msg: 'Failed to delete users, check err property for details', err: err}); }
-    else {
-      res.send({ success: true, msg: 'Deleted all users'});
-    }
-  });
+  // User.remove({}, (err) => {
+  //   if (err) { return res.status(500).send({ success: false, msg: 'Failed to delete users, check err property for details', err: err}); }
+  //   else {
+  //     res.send({ success: true, msg: 'Deleted all users'});
+  //   }
+  // });
+  res.status(404).send({success: false, msg: 'wtf are you trying to do mate'});
 });
 
 router.post('/', (req, res) => {

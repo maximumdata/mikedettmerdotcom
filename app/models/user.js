@@ -10,13 +10,12 @@ let UserSchema = new Schema({
 UserSchema.pre('save', function (next) {
   let user = this;
   if (this.isModified('password') || this.isNew) {
-    bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(user.password, 10, (err, hash) => {
       if (err) { return next(err); }
-      bcrypt.hash(user.password, salt, (err, hash) => {
-        if (err) { return next(err); }
+      else {
         user.password = hash;
         next();
-      });
+      }
     });
   } else {
     return next();
