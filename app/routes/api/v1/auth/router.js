@@ -8,25 +8,30 @@ router.post('/register', (req, res) => {
   if (!req.body.name || !req.body.password) {
     res.status(400).json({success: false, msg: 'Missing username or password'});
   } else {
-    let newUser = new User({
-      name: req.body.name,
-      password: req.body.name
-    });
+    User.find({}, (err, users) => {
+      if (err) { res.status(500).send({success: false, err: err, msg: 'Failed searching all users'}); }
+      if(users) {
+        res.status(500).send({ success: false, msg: 'Sorry, a user has already been registered for this installation.' });
+      } else {
+        let newUser = new User({
+          name: req.body.name,
+          password: req.body.name
+        });
 
-    newUser.save((err) => {
-      if (err) {
-        return res.status(500).json({success: false, msg: 'Username already exists'});
+        newUser.save((err) => {
+          if (err) {
+            return res.status(500).json({success: false, msg: 'Username already exists'});
+          }
+          res.status(201).json({success: true, msg: 'Successfully created new user'});
+        });
       }
-      res.status(201).json({success: true, msg: 'Successfully created new user'});
     });
   }
 
 });
 
 router.get('/register', (req, res) => {
-  User.find({}, (err, users) => {
-    if (!err) { res.json(users); }
-  });
+  res.send({ success: false, msg: 'Get outta here'});
 });
 
 router.post('/', (req, res) => {
