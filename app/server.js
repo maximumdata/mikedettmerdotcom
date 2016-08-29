@@ -9,6 +9,9 @@ let express = require('express'),
     jwt = require('jwt-simple'),
     morgan = require('morgan');
 
+global.rootRequire = (name) => {
+  return require('../' + __dirname + '/' + name);
+}
 
 const app = express();
 app.use(morgan('dev'));

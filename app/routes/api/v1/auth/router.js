@@ -1,6 +1,6 @@
 let router = require('express').Router(),
-    User = require('../../../../models/user'),
-    DB = require('../../../../../config/db'),
+    User = require.main.require('./models/user'),
+    DB = require.main.require('../config/db'),
     passport = require('passport'),
     jwt = require('jwt-simple');
 
@@ -67,7 +67,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
   }
 });
 
-let genToken = (headers) => {
+let getToken = (headers) => {
   if (headers && headers.authorization) {
     let parted = headers.authorization.split(' ');
     if (parted.length === 2) {
