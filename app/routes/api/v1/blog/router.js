@@ -47,4 +47,15 @@ let handleIncomingPost = (body) => {
   return body;
 }
 
+router.get('/:id', (req, res) => {
+  Post.findOne({_id: req.params.id}, (err, post) => {
+    if (err) { res.status(500).send({ success: false, msg: 'Finding post with id ' + req.params.id + ' failed, see err param for details', err: err}); }
+    if (!post) {
+      res.status(404).send({ success: false, msg: 'No post with that ID found', id: req.params.id });
+    } else {
+      res.send(post);
+    }
+  });
+});
+
 module.exports = router;
