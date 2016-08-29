@@ -37,6 +37,10 @@ router.get('/register', (req, res) => {
   //res.send({ success: false, msg: 'Get outta here'});
 });
 
+router.delete('/register', (req, res) => {
+  //delete all users
+});
+
 router.post('/', (req, res) => {
   User.findOne({
     name: req.body.name
