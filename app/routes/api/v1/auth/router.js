@@ -30,9 +30,12 @@ router.post('/register', (req, res) => {
 
 });
 
-// router.get('/register', (req, res) => {
-//   res.send({ success: false, msg: 'Get outta here'});
-// });
+router.get('/register', (req, res) => {
+  User.find({}, (err, users) => {
+    res.send(users);
+  });
+  //res.send({ success: false, msg: 'Get outta here'});
+});
 
 router.post('/', (req, res) => {
   User.findOne({
