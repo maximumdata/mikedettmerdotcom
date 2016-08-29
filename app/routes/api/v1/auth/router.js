@@ -11,7 +11,7 @@ router.post('/register', (req, res) => {
     User.find({}, (err, users) => {
       if (err) { res.status(500).send({success: false, err: err, msg: 'Failed searching all users'}); }
       if(users) {
-        res.status(500).send({ success: false, msg: 'Sorry, a user has already been registered for this installation.' });
+        res.status(500).send({ success: false, msg: 'Sorry, a user has already been registered for this installation.', users: users });
       } else {
         let newUser = new User({
           name: req.body.name,
