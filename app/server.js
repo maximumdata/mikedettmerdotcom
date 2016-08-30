@@ -1,56 +1,49 @@
-let express = require('express'),
-    path = require('path'),
-    http = require('http'),
-    favicon = require('serve-favicon'),
-    database = require('../config/db.js'),
-    routes = require('./routes/router.js'),
-    bodyParser = require('body-parser'),
-    passport = require('passport'),
-    jwt = require('jwt-simple'),
-    morgan = require('morgan');
+let express = require('express')
+let path = require('path')
+let http = require('http')
+let routes = require('./routes/router.js')
+let bodyParser = require('body-parser')
+let passport = require('passport')
+let morgan = require('morgan')
 
-global.rootRequire = (name) => {
-  return require('../' + __dirname + '/' + name);
-}
-
-const app = express();
-app.use(morgan('dev'));
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+const app = express()
+app.use(morgan('dev'))
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   indentedSyntax: true,
   sourceMap: true
-}));
+}))
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(passport.initialize());
+app.use(passport.initialize())
 
-require('../config/passport')(passport);
+require('../config/passport')(passport)
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
-app.use('/', routes);
+app.use('/', routes)
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+app.use(function (req, res, next) {
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
-app.set('port', 2528);
+app.set('port', 2528)
 
-const server = http.createServer(app);
+const server = http.createServer(app)
 
-server.listen(app.get('port'));
+server.listen(app.get('port'))
 server.on('listening', () => {
-  console.log('Listening on port: ' + app.get('port'));
-});
+  console.log('Listening on port: ' + app.get('port'))
+})
