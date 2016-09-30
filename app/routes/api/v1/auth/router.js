@@ -34,16 +34,15 @@ router.get('/register', (req, res) => {
     if (err) { res.status(500).send({err: err}) }
     res.send(users)
   })
-  // res.send({ success: false, msg: 'Get outta here'});
+// res.send({ success: false, msg: 'Get outta here'})
 })
 
 router.delete('/register', (req, res) => {
   // User.remove({}, (err) => {
-  //   if (err) { return res.status(500).send({ success: false, msg: 'Failed to delete users, check err property for details', err: err}); }
-  //   else {
-  //     res.send({ success: true, msg: 'Deleted all users'});
+  //   if (err) { return res.status(500).send({ success: false, msg: 'Failed to delete users, check err property for details', err: err}); }else {
+  //     res.send({ success: true, msg: 'Deleted all users'})
   //   }
-  // });
+  // })
   res.status(404).send({success: false, msg: 'wtf are you trying to do mate'})
 })
 

@@ -8,13 +8,13 @@ let morgan = require('morgan')
 
 const app = express()
 app.use(morgan('dev'))
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(require('node-sass-middleware')({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true,
-  sourceMap: true
-}))
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+// app.use(require('node-sass-middleware')({
+//   src: path.join(__dirname, 'public'),
+//   dest: path.join(__dirname, 'public'),
+//   indentedSyntax: true,
+//   sourceMap: true
+// }))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -36,7 +36,10 @@ app.use('/', routes)
 app.use(function (req, res, next) {
   var err = new Error('Not Found')
   err.status = 404
-  next(err)
+  if (req.accepts('json')) {
+    res.status(404).json(err)
+  }
+  res.status(404).send('Invalid Route')
 })
 
 app.set('port', 2528)
