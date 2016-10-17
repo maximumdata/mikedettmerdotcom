@@ -5,6 +5,6 @@ const bot = require('./bot/router')
 
 router.use('/api/v1/blog', blog)
 router.use('/api/v1/auth', auth)
-router.use('/bot', bot)
+router.use('/api/v1/bot', bot)
 
 module.exports = router
