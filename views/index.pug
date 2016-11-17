@@ -1,5 +1,12 @@
 extends layout
 
 block content
+  header
+    div.wrapper
+      h1= title
+      div Tagline here
+      
   h1= title
   p Welcome to #{title}
+
+  include test.pug

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  ul
+    each post in posts
+      li
+        div title: #{post.title}
+        div content: #{post.content}
+        div hidden: #{post.hidden}
+          
