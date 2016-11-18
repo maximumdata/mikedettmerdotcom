@@ -4,7 +4,7 @@ let Post = require.main.require('../models/post')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
+  res.render('index', { title: 'test', tagline: 'Oh boy can\'t believe it' })
 })
 
 router.get('/posts', (req, res) => {

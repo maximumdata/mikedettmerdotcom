@@ -1,7 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans')
+@import "./libs/reset.scss"
+
+$darkblack: #0a0a0b
+$black: #333333
+$silver: #f1f1f1
+$white: #FcFcFc
+$lightblue: #69D2E7
+
+html
+  color: $black
+  font-family: 'Open Sans', sans-serif
+  font-size: 16px
+  @media screen and (min-width: 800px)
+    font-size: 18px
+  @media screen and (min-width: 1200px)
+    font-size: 20px
+
+
+
+
 body
   padding: 0
   margin: 0
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  color: $black
+  background: $white
 
-a
-  color: #00B7FF
+header
+  width: 100vw
+  min-height: 300px
+  background: $silver
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .wrapper
+    //color: white
+    text-align: center
