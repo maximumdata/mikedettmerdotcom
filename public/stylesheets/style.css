@@ -386,8 +386,26 @@ body {
   color: #333333;
   background: #FcFcFc; }
 
+nav {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  background: #FcFcFc;
+  border-bottom: 1px solid #333333; }
+  nav .logo {
+    position: absolute;
+    left: 10px; }
+  nav .links {
+    width: 100%;
+    text-align: center; }
+    nav .links a {
+      margin: 0 5px; }
+
 header {
-  width: 100vw;
+  width: 100%;
   min-height: 300px;
   background: #f1f1f1;
   display: flex;
@@ -395,5 +413,38 @@ header {
   justify-content: center; }
   header .wrapper {
     text-align: center; }
+
+.content {
+  padding: 5px 10px;
+  max-width: 800px;
+  margin: 0 auto; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  main article {
+    width: 100%; }
+
+.pagination {
+  text-align: center;
+  margin: 1em 0 0; }
+  .pagination a, .pagination span {
+    margin: 0 5px; }
+
+.posts article h3 {
+  margin-bottom: 0; }
+
+.posts article .meta {
+  margin-bottom: 10px; }
+  .posts article .meta .date {
+    font-size: .75em;
+    font-style: italic; }
+  .posts article .meta .tags {
+    font-size: .75em; }
+
+footer {
+  margin-top: 1em; }
 
 /*# sourceMappingURL=style.css.map */

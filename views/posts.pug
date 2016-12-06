@@ -1,10 +1,22 @@
 extends layout
 
 block content
-  ul
+  main.posts
     each post in posts
-      li
-        div title: #{post.title}
-        div content: #{post.content}
-        div hidden: #{post.hidden}
-          
+      article
+        h3 
+          a(href='/post/' + post.slug) #{post.title}
+        .meta
+          .date=post.createdStr
+          .tags Tagged with: 
+            - var i = 0
+            each tag in post.tags
+              - var str = ', '
+              if (i == post.tags.length - 1)
+                - str = ''
+              a(href='/tag/' + tag) #{tag}
+              =str
+              - i++
+        div desc: #{post.desc}
+  if pages > 1
+    include partials/pagination.pug

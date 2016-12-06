@@ -25,8 +25,27 @@ body
   color: $black
   background: $white
 
+nav
+  padding: 5px 10px
+  display: flex
+  align-items: center
+  justify-content: center
+  position: fixed
+  width: 100%
+  background: $white
+  border-bottom: 1px solid $black
+  .logo
+    position: absolute
+    left: 10px
+  .links
+    width: 100%
+    text-align: center
+    a
+      margin: 0 5px
+
+
 header
-  width: 100vw
+  width: 100%
   min-height: 300px
   background: $silver
   display: flex
@@ -36,3 +55,37 @@ header
   .wrapper
     //color: white
     text-align: center
+
+.content
+  padding: 5px 10px
+  max-width: 800px
+  margin: 0 auto
+
+main
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  article
+    width: 100%
+
+.pagination
+  text-align: center
+  margin: 1em 0 0
+  a, span
+    margin: 0 5px
+
+.posts
+  article
+    h3
+      margin-bottom: 0
+    .meta
+      margin-bottom: 10px
+      .date
+        font-size: .75em
+        font-style: italic
+      .tags
+        font-size: .75em
+
+footer
+  margin-top: 1em
