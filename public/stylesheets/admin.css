@@ -1,0 +1,21 @@
+.admin nav {
+  z-index: 2; }
+
+.admin ul.nav li {
+  margin-bottom: 8px; }
+
+.admin .createPost label, .admin .createPost input {
+  display: block;
+  width: 100%; }
+
+.admin .createPost input {
+  font-family: monospace;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box; }
+
+.admin .createPost label {
+  font-family: monospace; }
+
+/*# sourceMappingURL=admin.css.map */

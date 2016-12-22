@@ -1,11 +1,15 @@
 var express = require('express')
 var path = require('path')
-var favicon = require('serve-favicon')
+// var favicon = require('serve-favicon')
 var logger = require('morgan')
-var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
+let cookieParser = require('cookie-parser')
+let session = require('cookie-session')
+let passport = require('passport')
+let LocalStrategy = require('passport-local').Strategy
 
 var index = require('./routes/index')
+let post = require('./routes/post')
 var users = require('./routes/users')
 let admin = require('./routes/admin')
 
@@ -21,6 +25,13 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(session({
+  name: 'session',
+  keys: ['play me', 'off key', 'board cat'],
+
+  // Cookie Options
+  maxAge: .5 * (60 * 60 * 1000) // half hour
+}))
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -29,7 +40,17 @@ app.use(require('node-sass-middleware')({
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(passport.initialize())
+app.use(passport.session())
+
+let Account = require('./models/account')
+passport.use(new LocalStrategy(Account.authenticate()))
+
+passport.serializeUser(Account.serializeUser())
+passport.deserializeUser(Account.deserializeUser())
+
 app.use('/', index)
+app.use('/post', post)
 app.use('/admin', admin)
 app.use('/users', users)
 

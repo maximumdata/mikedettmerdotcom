@@ -6,29 +6,29 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title #{title} | mikedettmer.com
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    nav
-      .logo
-        |MD
-      .links
-        a(href='/') Home
-        a(href='/about') About
-        a(href='/projects') Projects
-    if !noHeader
-      header
-        .wrapper
-          h1= title
-          if tagline
-            div.tagline= tagline
-    .content
-      block content
-  
-    include partials/footer.pug
-    script.
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    if(bodyClass === 'admin')
+      link(rel='stylesheet', href='/stylesheets/admin.css')
+  if(bodyClass)
+    body(class=bodyClass)
+  else
+    body
+  nav
+    .navWrap
+      .left
+        a(href='/') mikedettmer.com
+      .right
+        //- .menu menu
+  .content
+    block content
 
-      ga('create', 'UA-57479220-1', 'auto');
-      ga('send', 'pageview');
+  include partials/footer.pug
+  if(bodyClass === 'post')
+    script(src='/javascripts/singlePost.js')
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57479220-1', 'auto');
+    ga('send', 'pageview');

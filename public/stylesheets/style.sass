@@ -1,73 +1,129 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans')
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,700')
 @import "./libs/reset.scss"
+@import "./libs/github.css"
 
-$darkblack: #0a0a0b
-$black: #333333
-$silver: #f1f1f1
+$black: #333
 $white: #FcFcFc
-$lightblue: #69D2E7
+$silver: #f9f9f9
+$blue: #00A8E8
+$darkblue: #003459
+
+$space: 1rem
+$space-xs: .75rem
+$space-sm: .88rem
+$space-lg: 1.25rem
+
+$sans: 'Open Sans', sans-serif
+$serif: 'Merriweather', serif
 
 html
   color: $black
-  font-family: 'Open Sans', sans-serif
+  background-color: $white
+  font-family: $serif
   font-size: 16px
   @media screen and (min-width: 800px)
     font-size: 18px
-  @media screen and (min-width: 1200px)
-    font-size: 20px
 
+h1,h2,h3,h4,h5,h6
+  font-family: $sans
+  font-weight: 700
+  margin-bottom: $space-lg
+  line-height: 1
 
+h1
+  font-size: 1.75rem
+h2
+  font-size: 1.5rem
+h3
+  font-size: 1.25rem
+h4
+  font-size: 1.1rem
 
+a
+  color: $darkblue
+  // &:visited
+  //   color: $darkblue
 
-body
-  padding: 0
-  margin: 0
-  color: $black
-  background: $white
+p
+  margin-bottom: $space-sm
+  line-height: 1.25
 
 nav
-  padding: 5px 10px
-  display: flex
-  align-items: center
-  justify-content: center
   position: fixed
   width: 100%
   background: $white
   border-bottom: 1px solid $black
-  .logo
-    position: absolute
-    left: 10px
-  .links
-    width: 100%
-    text-align: center
-    a
-      margin: 0 5px
+  z-index: 100
+  font-family: $sans
+  font-weight: 400
+  .navWrap
+    max-width: 800px
+    padding: 8px 8px
+    margin: 0 auto
+    display: flex
+    justify-content: flex-end
+    .left
+      margin-right: auto
 
-
-header
-  width: 100%
-  min-height: 300px
+pre, code
+  font-family: monospace
+pre
+  padding: $space-sm
   background: $silver
-  display: flex
-  align-items: center
-  justify-content: center
+  border: 1px dashed $black
+  font-size: $space-sm
+  line-height: 1.25
+  margin-bottom: $space-lg
 
-  .wrapper
-    //color: white
-    text-align: center
+.intro
+  .title
+    margin-bottom: 3px
+  .desc
+    font-style: italic
+    padding: 4px 0
+
+.meta
+  font-size: $space-xs
+  //font-style: italic
+  margin-bottom: $space-lg
 
 .content
-  padding: 5px 10px
   max-width: 800px
+  padding: 48px 8px
   margin: 0 auto
+  figure
+    max-width: 100%
+    height: auto
+    padding: 16px
+    border: 1px dashed $black
+    background: $silver
+    text-align: center
+    figcaption
+      font-family: $sans
+      font-weight: 400
+      font-size: $space-sm
+      font-style: italic
+  img
+    max-width: 100%
+    height: auto
 
-main
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  article
-    width: 100%
+blockquote
+  background: #f9f9f9
+  border-left: 10px solid #ccc
+  margin: 1.5em 10px
+  padding: 0.5em 10px
+  quotes: "\201C""\201D""\2018""\2019"
+
+  &:before
+    color: #ccc
+    content: open-quote
+    font-size: 4em
+    line-height: 0.1em
+    margin-right: 0.25em
+    vertical-align: -0.4em
+
+  p
+    display: inline
 
 .pagination
   text-align: center
@@ -75,17 +131,6 @@ main
   a, span
     margin: 0 5px
 
-.posts
-  article
-    h3
-      margin-bottom: 0
-    .meta
-      margin-bottom: 10px
-      .date
-        font-size: .75em
-        font-style: italic
-      .tags
-        font-size: .75em
 
-footer
-  margin-top: 1em
+//@import "./partials/_index.sass"
+//@import "./partials/_post.sass"

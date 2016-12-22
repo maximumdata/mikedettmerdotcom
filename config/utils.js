@@ -1,9 +1,16 @@
 const Post = require('../models/post')
 const options = require('./options')
+const markedPackage = require('marked')
+
+markedPackage.setOptions({
+  highlight: function (code) {
+    return require('highlight.js').highlightAuto(code).value
+  }
+})
 
 const utils = {
   getTotalNumberOfPosts: (searchOptions = {hidden: false}) => {
-    console.log('posts', searchOptions);
+    console.log('posts', searchOptions)
     return new Promise(
         (resolve, reject) => {
           Post.count(searchOptions, (err, count) => {
@@ -15,7 +22,7 @@ const utils = {
   },
 
   getTotalNumberOfPages: (searchOptions = {hidden: false}) => {
-    console.log('pages', searchOptions);
+    console.log('pages', searchOptions)
     return new Promise((resolve, reject) => {
       utils.getTotalNumberOfPosts(searchOptions).then((count) => {
         resolve(Math.ceil(count / options.postsPerPage))
@@ -32,6 +39,18 @@ const utils = {
         Post.find(searchOptions, 'title slug desc createdStr tags', { sort: '-id', limit: options.postsPerPage, skip: (skipCount * options.postsPerPage) }, (err, posts) => {
           if (err) { reject(err) }
           resolve(posts)
+        })
+      }
+    )
+  },
+
+  getPostBySlug: (slug) => {
+    return new Promise(
+      (resolve, reject) => {
+        Post.findOne({slug: slug}, (err, post) => {
+          if (err) { reject(err) }
+          if (!post) { reject({ error: { status: 'No post with that slug was found' } }) }
+          resolve(post)
         })
       }
     )
@@ -75,6 +94,18 @@ const utils = {
     let time = date.getHours() > 13 ? `${date.getHours() - 12}:${date.getMinutes()} PM` : `${date.getHours()}:${date.getMinutes()} PM`
 
     return `${day}, ${dateNum}${nth(dateNum)} of ${month}, ${date.getFullYear()} at ${time}`
+  },
+
+  marked: () => {
+    return markedPackage
+  },
+
+  isAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+
+    res.redirect('/login')
   }
 }
 

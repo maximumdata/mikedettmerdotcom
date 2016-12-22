@@ -1,33 +1,14 @@
 const router = require('express').Router()
+const Account = require.main.require('../models/account')
 const slug = require('slug')
 const utils = require('../config/utils')
 const Post = require.main.require('../models/post')
 
-router.get('/create', (req, res) => {
-  let id = null
-  utils.getTotalNumberOfPosts().then((count) => {
-    id = count + 1
-
-    let newPost = new Post({
-      id: id,
-      title: `title number ${id}`,
-      slug: slug(`title3 test @$&*$@%(#@!*#!)`), // ${Date.now()}`),
-      content: 'String',
-      desc: `${Date.now()} -- desc time`,
-      created: Date.now(),
-      createdStr: utils.stringFromDate(Date.now()),
-      categories: ['1', '2', '3'],
-      tags: ['4', '5', '6']
-    })
-
-    newPost.save((err, saved) => {
-      if (err) throw err
-      res.json(saved)
-    })
-  })
+router.get('/', utils.isAuthenticated, (req, res) => {
+  res.render('admin/index', {bodyClass: 'admin'})
 })
 
-router.post('/create', (req, res) => {
+router.post('/create', utils.isAuthenticated, (req, res) => {
   let id = null
 
   utils.getTotalNumberOfPosts().then((count) => {
@@ -49,17 +30,41 @@ router.post('/create', (req, res) => {
       if (err) {
         if (err.code === 11000) {
           res.status(500).json(utils.jsonError('That slug is already in use', err))
-        } else { throw err }
+        } else { res.json(utils.jsonError('Post not saved', {})); throw err }
       }
       res.json(saved)
     })
+  }).catch((err) => {
+    res.json(utils.jsonError('Post not saved due to unspecified error', err))
   })
 })
 
-router.get('/delete', (req, res) => {
+router.get('/delete', utils.isAuthenticated, (req, res) => {
   Post.remove({}, (err) => {
     if (err) { throw err }
     res.send('deleted')
+  })
+})
+
+router.get('/post/', utils.isAuthenticated, (req, res) => {
+  res.render('admin/createPost', {bodyClass: 'admin'})
+})
+
+router.get('/register', function (req, res) {
+  res.render('register', {bodyClass: 'admin'})
+})
+
+router.post('/register', function (req, res, next) {
+  console.log('registering user')
+  Account.register(new Account({username: req.body.username}), req.body.password, function (err) {
+    if (err) {
+      console.log('error while user register!', err)
+      return next(err)
+    }
+
+    console.log('user registered!')
+
+    res.redirect('/')
   })
 })
 

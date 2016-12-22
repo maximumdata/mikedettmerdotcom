@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  main.single
+    .intro
+      h1.title= post.title
+      .desc= post.desc
+      .meta
+        .date=post.createdStr
+        .tags Tags: 
+          - var i = 0
+          each tag in post.tags
+            - var str = ', '
+            if (i == post.tags.length - 1)
+              - str = ''
+            a(href='/tag/' + tag) #{tag}
+            =str
+            - i++ 
+    article!= post.content

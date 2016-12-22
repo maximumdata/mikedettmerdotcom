@@ -1,7 +1,7 @@
-const Post = require('../models/post')
+// const Post = require('../models/post')
 
 const options = {
-  postsPerPage: 5
+  postsPerPage: 7
 }
 
 module.exports = options
