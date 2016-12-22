@@ -39,12 +39,12 @@ router.post('/create', utils.isAuthenticated, (req, res) => {
   })
 })
 
-router.get('/delete', utils.isAuthenticated, (req, res) => {
-  Post.remove({}, (err) => {
-    if (err) { throw err }
-    res.send('deleted')
-  })
-})
+// router.get('/delete', utils.isAuthenticated, (req, res) => {
+//   Post.remove({}, (err) => {
+//     if (err) { throw err }
+//     res.send('deleted')
+//   })
+// })
 
 router.get('/post/', utils.isAuthenticated, (req, res) => {
   res.render('admin/createPost', {bodyClass: 'admin'})
