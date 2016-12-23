@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const utils = require('../config/utils')
-// const marked = utils.marked
 const marked = require('marked')
-// const Post = require.main.require('../models/post')
 
 marked.setOptions({
   highlight: function (code) {
