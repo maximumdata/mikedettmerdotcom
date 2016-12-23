@@ -95,16 +95,24 @@ pre {
   line-height: 1.25;
   margin-bottom: 1.25rem; }
 
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
 .intro .title {
   margin-bottom: 3px; }
 
-.intro .desc {
-  font-style: italic;
-  padding: 4px 0; }
-
-.meta {
-  font-size: 0.75rem;
-  margin-bottom: 1.25rem; }
+.intro .meta {
+  font-size: 0.75rem; }
+  .intro .meta div {
+    padding: 2px 0; }
+  .intro .meta .desc {
+    color: #737373;
+    font-style: italic;
+    font-size: 0.88rem;
+    margin-bottom: 1rem; }
 
 .content {
   max-width: 800px;

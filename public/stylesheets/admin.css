@@ -4,18 +4,18 @@
 .admin ul.nav li {
   margin-bottom: 8px; }
 
-.admin .createPost label, .admin .createPost input {
+.admin .createPost label, .admin .createPost input, .admin .editPost label, .admin .editPost input {
   display: block;
   width: 100%; }
 
-.admin .createPost input {
+.admin .createPost input, .admin .editPost input {
   font-family: monospace;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
   box-sizing: border-box; }
 
-.admin .createPost label {
+.admin .createPost label, .admin .editPost label {
   font-family: monospace; }
 
 /*# sourceMappingURL=admin.css.map */

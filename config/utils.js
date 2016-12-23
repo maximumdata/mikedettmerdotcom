@@ -10,7 +10,7 @@ markedPackage.setOptions({
 
 const utils = {
   getTotalNumberOfPosts: (searchOptions = {hidden: false}) => {
-    console.log('posts', searchOptions)
+    // console.log('posts', searchOptions)
     return new Promise(
         (resolve, reject) => {
           Post.count(searchOptions, (err, count) => {
@@ -22,7 +22,7 @@ const utils = {
   },
 
   getTotalNumberOfPages: (searchOptions = {hidden: false}) => {
-    console.log('pages', searchOptions)
+    // console.log('pages', searchOptions)
     return new Promise((resolve, reject) => {
       utils.getTotalNumberOfPosts(searchOptions).then((count) => {
         resolve(Math.ceil(count / options.postsPerPage))
@@ -54,6 +54,41 @@ const utils = {
         })
       }
     )
+  },
+
+  getPostById: (id) => {
+    return new Promise((resolve, reject) => {
+      Post.findOne({id: id}, (err, post) => {
+        if (err) { reject(err) }
+        if (!post) { reject({ error: { status: 'No post with that ID was found' } }) }
+        resolve(post)
+      })
+    })
+  },
+
+  getAllPosts: () => {
+    return new Promise(
+      (resolve, reject) => {
+        Post.find({}, (err, posts) => {
+          if (err) { reject(err) }
+          resolve(posts)
+        })
+      }
+    )
+  },
+
+  updatePostById: (id, body) => {
+    body.tags = utils.arrayFromCSV(body.tags)
+    return new Promise((resolve, reject) => {
+      utils.getPostById(id).then((post) => {
+        Post.findOneAndUpdate({id: id}, body, (err, post) => {
+          if (err) { reject(err) }
+          resolve(post)
+        })
+      }).catch((err) => {
+        reject(utils.jsonError('Unable to find post with that ID', err))
+      })
+    })
   },
 
   getOptions: () => {

@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  main.editPost
+    form(action="/admin/edit/" + post.id, method="POST")
+      label title
+      input(name="title", value="" + post.title)
+      br
+      label content
+      textarea(name="content") #{post.content}
+      br
+      label desc
+      input(name="desc", value = '' + post.desc)
+      br
+      //- label categories
+      //- input(name="categories")
+      //- br
+      label tags
+      input(name="tags", value = '' + post.tags)
+      br
+      input(type="submit")
+
+      link(rel="stylesheet", href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css")
+      script(src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js")
+      script.
+        var simplemde = new SimpleMDE({ forceSync: true })

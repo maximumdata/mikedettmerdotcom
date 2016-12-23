@@ -1,19 +1,19 @@
-var express = require('express')
-var path = require('path')
-// var favicon = require('serve-favicon')
-var logger = require('morgan')
-var bodyParser = require('body-parser')
-let cookieParser = require('cookie-parser')
-let session = require('cookie-session')
-let passport = require('passport')
-let LocalStrategy = require('passport-local').Strategy
+const express = require('express')
+const path = require('path')
+// const favicon = require('serve-favicon')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const session = require('cookie-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
-var index = require('./routes/index')
-let post = require('./routes/post')
-var users = require('./routes/users')
-let admin = require('./routes/admin')
+const index = require('./routes/index')
+const post = require('./routes/post')
+const users = require('./routes/users')
+const admin = require('./routes/admin')
 
-var app = express()
+const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -30,7 +30,7 @@ app.use(session({
   keys: ['play me', 'off key', 'board cat'],
 
   // Cookie Options
-  maxAge: .5 * (60 * 60 * 1000) // half hour
+  maxAge: 0.5 * (60 * 60 * 1000) // half hour
 }))
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize())
 app.use(passport.session())
 
-let Account = require('./models/account')
+const Account = require('./models/account')
 passport.use(new LocalStrategy(Account.authenticate()))
 
 passport.serializeUser(Account.serializeUser())

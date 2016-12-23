@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Account = require.main.require('../models/account')
+// const Account = require.main.require('../models/account')
 const slug = require('slug')
 const utils = require('../config/utils')
 const Post = require.main.require('../models/post')
@@ -22,7 +22,8 @@ router.post('/create', utils.isAuthenticated, (req, res) => {
       desc: body.desc,
       created: new Date(Date.now()),
       createdStr: utils.stringFromDate(Date.now()),
-      categories: utils.arrayFromCSV(body.categories),
+      // categories: utils.arrayFromCSV(body.categories),
+      categories: [],
       tags: utils.arrayFromCSV(body.tags)
     })
 
@@ -48,6 +49,30 @@ router.post('/create', utils.isAuthenticated, (req, res) => {
 
 router.get('/post/', utils.isAuthenticated, (req, res) => {
   res.render('admin/createPost', {bodyClass: 'admin'})
+})
+
+router.get('/edit', utils.isAuthenticated, (req, res) => {
+  utils.getAllPosts().then((posts) => {
+    res.render('admin/editList', { bodyClass: 'admin', posts })
+  }).catch((err) => {
+    res.json(utils.jsonError('here is the error', err))
+  })
+})
+
+router.get('/edit/:id', utils.isAuthenticated, (req, res) => {
+  utils.getPostById(req.params.id).then((post) => {
+    res.render('admin/editPost', { bodyClass: 'admin', post })
+  }).catch((err) => {
+    res.json(utils.jsonError('error', err))
+  })
+})
+
+router.post('/edit/:id', utils.isAuthenticated, (req, res) => {
+  utils.updatePostById(req.params.id, req.body).then((post) => {
+    res.redirect('/admin/edit')
+  }).catch((err) => {
+    res.json(err)
+  })
 })
 
 // router.get('/register', function (req, res) {

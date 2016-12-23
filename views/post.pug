@@ -4,7 +4,6 @@ block content
   main.single
     .intro
       h1.title= post.title
-      .desc= post.desc
       .meta
         .date=post.createdStr
         .tags Tags: 
@@ -16,4 +15,5 @@ block content
             a(href='/tag/' + tag) #{tag}
             =str
             - i++ 
+        .desc= post.desc
     article!= post.content

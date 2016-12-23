@@ -75,17 +75,23 @@ pre
   line-height: 1.25
   margin-bottom: $space-lg
 
+strong
+  font-weight: bold
+em
+  font-style: italic
+
 .intro
   .title
     margin-bottom: 3px
-  .desc
-    font-style: italic
-    padding: 4px 0
-
-.meta
-  font-size: $space-xs
-  //font-style: italic
-  margin-bottom: $space-lg
+  .meta
+    font-size: $space-xs
+    div
+      padding: 2px 0
+    .desc
+      color: lighten($black, 25)
+      font-style: italic
+      font-size: $space-sm
+      margin-bottom: $space
 
 .content
   max-width: 800px

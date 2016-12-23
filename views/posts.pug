@@ -9,7 +9,6 @@ block content
         .intro
           h2.title
             a(href='/post/' + post.slug) #{post.title}
-          .desc= post.desc
           .meta
             .date=post.createdStr
             .tags Tags: 
@@ -21,6 +20,7 @@ block content
                 a(href='/tag/' + tag) #{tag}
                 =str
                 - i++ 
+            .desc= post.desc
         //- h2
         //-   a(href='/post/' + post.slug) #{post.title}
         //- .meta
