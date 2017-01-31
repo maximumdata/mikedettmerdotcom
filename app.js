@@ -12,6 +12,7 @@ const index = require('./routes/index')
 const post = require('./routes/post')
 const users = require('./routes/users')
 const admin = require('./routes/admin')
+const brewsVF = require('./routes/vf')
 
 const app = express()
 
@@ -53,6 +54,8 @@ app.use('/', index)
 app.use('/post', post)
 app.use('/admin', admin)
 app.use('/users', users)
+
+app.use('/brews/vf', brewsVF)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
