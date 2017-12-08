@@ -1,8 +1,0 @@
-extends ../layout
-
-block content
-  main.postList
-    each post in posts
-      span id: #{post.id} - 
-      a(href='/admin/edit/' + post.id) #{post.title}
-      br
