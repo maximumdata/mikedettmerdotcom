@@ -1,6 +1,6 @@
 const router = require('express').Router()
 // const Account = require.main.require('../models/account')
-const slug = require('slug')
+const slug = require('slugify')
 const utils = require('../config/utils')
 const Post = require.main.require('../models/post')
 
