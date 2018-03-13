@@ -15,5 +15,8 @@
     "bugs": {
         "url": "https://github.com/maximumdata/mikedettmerdotcom/issues"
     },
-    "homepage": "https://github.com/maximumdata/mikedettmerdotcom#readme"
+    "homepage": "https://github.com/maximumdata/mikedettmerdotcom#readme",
+    "dependencies": {
+        "express": "^4.16.3"
+    }
 }
