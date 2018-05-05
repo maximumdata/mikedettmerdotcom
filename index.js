@@ -12,6 +12,12 @@ app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
+app.post('/alexa/test', (req, res) => {
+
+  console.log(req);
+  res.send(500);
+});
+
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
