@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,700");
+@import url(./libs/github.css);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
+  color: #333;
+  background-color: #FcFcFc;
+  font-family: "Merriweather", serif;
+  font-size: 16px; }
+  @media screen and (min-width: 800px) {
+    html {
+      font-size: 18px; } }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  line-height: 1; }
+
+h1 {
+  font-size: 1.75rem; }
+
+h2 {
+  font-size: 1.5rem; }
+
+h3 {
+  font-size: 1.25rem; }
+
+h4 {
+  font-size: 1.1rem; }
+
+a {
+  color: #003459; }
+
+p {
+  margin-bottom: 0.88rem;
+  line-height: 1.25; }
+
+nav {
+  position: fixed;
+  width: 100%;
+  background: #FcFcFc;
+  border-bottom: 1px solid #333;
+  z-index: 100;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400; }
+  nav .navWrap {
+    max-width: 800px;
+    padding: 8px 8px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end; }
+    nav .navWrap .left {
+      margin-right: auto; }
+
+pre, code {
+  font-family: monospace; }
+
+pre {
+  padding: 0.88rem;
+  background: #f9f9f9;
+  border: 1px dashed #333;
+  font-size: 0.88rem;
+  line-height: 1.25;
+  margin-bottom: 1.25rem; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+.intro .title {
+  margin-bottom: 3px; }
+
+.intro .meta {
+  font-size: 0.75rem; }
+  .intro .meta div {
+    padding: 2px 0; }
+  .intro .meta .desc {
+    color: #737373;
+    font-style: italic;
+    font-size: 0.88rem;
+    margin-bottom: 1rem; }
+
+.content {
+  max-width: 800px;
+  padding: 48px 8px;
+  margin: 0 auto; }
+  .content figure {
+    max-width: 100%;
+    height: auto;
+    padding: 16px;
+    border: 1px dashed #333;
+    background: #f9f9f9;
+    text-align: center; }
+    .content figure figcaption {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      font-size: 0.88rem;
+      font-style: italic; }
+  .content img {
+    max-width: 100%;
+    height: auto; }
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "“" "”" "‘" "’"; }
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em; }
+  blockquote p {
+    display: inline; }
+
+.pagination {
+  text-align: center;
+  margin: 1em 0 0; }
+  .pagination a, .pagination span {
+    margin: 0 5px; }
+
+/*# sourceMappingURL=style.css.map */

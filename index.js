@@ -14,7 +14,7 @@ app.get('*', function(req, res) {
 
 app.post('/alexa/test', (req, res) => {
 
-  console.log(req);
+  console.log(req.body);
   res.send(500);
 });
 
