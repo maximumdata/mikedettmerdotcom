@@ -4,6 +4,7 @@ var app = express();
 const path = require('path');
 const needle = require('needle');
 const cheerio = require('cheerio');
+const names = require('./names.js');
 
 // Define the port to run on
 app.set('port', 2368);
@@ -30,7 +31,11 @@ app.get('/dm/statue', (req, response) => {
     });
 });
 
-app.get('*', function(req, res) {
+app.get('/dm/name', (req, res) => {
+    res.json(names(req.query.race, req.query.sex));
+});
+
+app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
