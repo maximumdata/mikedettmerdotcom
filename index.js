@@ -5,6 +5,7 @@ const path = require('path');
 const needle = require('needle');
 const cheerio = require('cheerio');
 const names = require('./names.js');
+const inns = require('./inns.js');
 
 // Define the port to run on
 app.set('port', 2368);
@@ -33,6 +34,10 @@ app.get('/dm/statue', (req, response) => {
 
 app.get('/dm/name', (req, res) => {
     res.json(names(req.query.race, req.query.sex));
+});
+
+app.get('/dm/inn', (req, res) => {
+  res.json(inns());
 });
 
 app.get('/', function(req, res) {
