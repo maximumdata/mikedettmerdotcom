@@ -30,6 +30,10 @@ app.get('/dm/statue', (req, response) => {
     });
 });
 
+app.get('/scp', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/scp.html'));
+});
+
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
