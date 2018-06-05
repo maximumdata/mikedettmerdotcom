@@ -52,9 +52,9 @@
         $('#loading').fadeIn("fast");
       });
       if( skip ) { // if this page is a specific SCP object's article...
-        $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent('http://www.scp-wiki.net/scp-' + validateSkip(skip) ) + '&callback=?', function(data) { afterPageLoad(data, 1, noPush); } );
+        $.getJSON('https://whateverorigin.org/get?url=' + encodeURIComponent('http://www.scp-wiki.net/scp-' + validateSkip(skip) ) + '&callback=?', function(data) { afterPageLoad(data, 1, noPush); } );
       } else if(!skip && url) { // otherwise, if it's a supplemental page or, really, any other page on the site...
-        $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent('http://www.scp-wiki.net/' + url) + '&callback=?', function(data) { afterPageLoad(data, 0, noPush); } );
+        $.getJSON('https://whateverorigin.org/get?url=' + encodeURIComponent('http://www.scp-wiki.net/' + url) + '&callback=?', function(data) { afterPageLoad(data, 0, noPush); } );
       }
     }
 
