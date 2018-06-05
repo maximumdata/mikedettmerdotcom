@@ -40,7 +40,11 @@ app.get('/dm/inn', (req, res) => {
   res.json(inns());
 });
 
-app.get('/', function(req, res) {
+app.get('/scp', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/scp.html'));
+});
+
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
