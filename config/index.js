@@ -1,5 +1,9 @@
-import mongoose from './mongoose';
+import dotenv from 'dotenv';
 
-export default {
-	mongoose
-};
+const config = dotenv.config();
+
+if (config.error) {
+	throw new Error(config.error);
+}
+
+export default config.parsed;
