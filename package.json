@@ -1,6 +1,6 @@
 {
 	"name": "mikedettmerdotcom",
-	"version": "3.1.1",
+	"version": "3.1.2",
 	"description": "my website's api",
 	"main": "index.js",
 	"scripts": {
