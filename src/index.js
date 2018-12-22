@@ -1,6 +1,6 @@
-import config from './config';
 import express from 'express';
 import bodyParser from 'body-parser';
+import config from './config';
 import db from './utils/db';
 import router from './router';
 
