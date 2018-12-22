@@ -35,7 +35,7 @@
 // 		beforeEach(() => {
 // 			SalesforceTest = new Salesforce(dummyRetailer);
 // 		});
-		
+
 // 		it('should be a function', () => {
 // 			expect(Salesforce).to.be.a('function');
 // 		});
@@ -78,7 +78,7 @@
 // 		it('should send when send() is called', () => {
 // 			sendStub = sinon.stub();
 // 			SalesforceTest.send = sendStub;
-			
+
 // 			SalesforceTest.send();
 // 			expect(sendStub).to.be.called;
 // 		});

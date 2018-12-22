@@ -8,7 +8,7 @@ export function listAllTasks(req, res) {
 }
 
 export function createNewTask(req, res) {
-	let newTask = new Task(req.body);
+	const newTask = new Task(req.body);
 	newTask.save((err, task) => {
 		if (err) res.status(500).send(err);
 		res.status(201).json(task);
