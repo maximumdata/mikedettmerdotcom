@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "babel-node index.js",
+		"restart": "pm2 restart all",
 		"dev": "NODE_ENV=development nodemon --harmony index.js --exec babel-node --presets babel-preset-env",
 		"mocha": "mocha --require ./tests/utils/test-framework.js --require ./tests/compilers/mocha --exit",
 		"test": "npm run mocha -- ./tests/*.spec.js './tests/**/*.spec.js' --disable-log",
