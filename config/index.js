@@ -1,9 +1,15 @@
 import dotenv from 'dotenv';
+let config;
 
-const config = dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
 
-if (config.error) {
-	throw new Error(config.error);
+	config = dotenv.config();
+
+	if (config.error) {
+		throw new Error(config.error);
+	}
+} else {
+	config.parsed = {};
 }
 
 export default config.parsed;
