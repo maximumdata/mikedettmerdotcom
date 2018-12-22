@@ -1,4 +1,4 @@
-import config from '../config';
+import config from '../src/config';
 
 describe('(Utils) ...config', () => {
 	it('should be an object', () => {
