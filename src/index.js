@@ -1,21 +1,22 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import config from './config';
-import db from './utils/db';
+import DB from './db';
 import router from './router';
 
-const port = config.PORT || 2369;
+const port = config.PORT;
 const app = express();
 
-app.set('db', db);
+const database = new DB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/v1/', router);
 
-app.listen(port, () => {
+app.listen(port, async () => {
 	console.log(`listening on: ${port}`);
+	await database.open();
 });
 
 export default app;
