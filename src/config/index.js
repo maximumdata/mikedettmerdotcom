@@ -17,8 +17,8 @@ if (process.env.NODE_ENV !== 'production') {
 		DB_PASS: process.env.DB_PASS,
 		DB_URL: process.env.DB_URL,
 		DB_NAME: process.env.DB_NAME,
-		API_VERSION: process.env.API_VERSION,
-		DB_PROTOCOL: process.env.PROTOCOL
+		DB_PROTOCOL: process.env.DB_PROTOCOL,
+		API_VERSION: process.env.API_VERSION
 	};
 }
 
