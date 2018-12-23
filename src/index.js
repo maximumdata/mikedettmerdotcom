@@ -8,6 +8,7 @@ const port = config.PORT || 2369;
 const app = express();
 
 app.set('db', db);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -17,5 +18,4 @@ app.listen(port, () => {
 	console.log(`listening on: ${port}`);
 });
 
-// import sandbox from './sandbox';
 export default app;
