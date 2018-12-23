@@ -11,7 +11,9 @@ if (process.env.NODE_ENV !== 'production') {
 		throw new Error(config.error);
 	}
 } else {
-	config.parsed = { PORT, DB_USER, DB_PASS, DB_URL, DB_NAME, DB_PROTOCOL, API_VERSION } = process.env;
+	config.parsed = {
+ PORT, DB_USER, DB_PASS, DB_URL, DB_NAME, DB_PROTOCOL, API_VERSION
+} = process.env;
 }
 
 export default config.parsed;
