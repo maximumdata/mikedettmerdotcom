@@ -17,7 +17,7 @@ class DB {
 		});
 	}
 
-	getConnectString(env) {
+	static getConnectString(env) {
 		if (env === 'development') {
 			return `${config.DB_PROTOCOL}://${config.DB_USER}:${config.DB_PASS}@${config.DB_URL}/${config.DB_NAME}`;
 		}
@@ -32,7 +32,7 @@ class DB {
 		}
 	}
 
-	async close() {
+	static async close() {
 		try {
 			await mongoose.connection.close();
 		} catch (error) {
