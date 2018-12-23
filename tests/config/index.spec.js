@@ -1,6 +1,6 @@
-import config from '../src/config';
+import config from '../../src/config';
 
-describe('(Utils) ...config', () => {
+describe('Config', () => {
 	it('should be an object', () => {
 		expect(config).to.be.a('object');
 	});
