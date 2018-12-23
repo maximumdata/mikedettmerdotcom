@@ -37,7 +37,7 @@ export function updateTask(req, res) {
 }
 
 export function deleteTask(req, res) {
-	Task.deleteOne({ _id: req.params.taskId }, (err, task) => {
+	Task.deleteOne({ _id: req.params.taskId }, (err) => {
 		if (err) res.status(404).send(err);
 		res.status(200).json({ message: `Task with id ${req.params.taskId} successfully deleted` });
 	});
