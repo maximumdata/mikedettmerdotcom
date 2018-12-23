@@ -43,7 +43,7 @@ SIGNALS.forEach((signal) => {
 	});
 });
 
-process.on('uncaughtException', function (err) {
+process.on('uncaughtException', (err) => {
 	console.info('Uncaught Exception: ', err.stack || err);
 });
 
