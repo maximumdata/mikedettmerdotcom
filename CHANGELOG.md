@@ -1,5 +1,5 @@
 ### mikedettmerdotcom API
-#### Name Format: <Adjective> <Band>
+#### Name Format: (Adjective) (Band)
 ##### Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
 #### v3.3.0 | Adventerous Analogue Dear
