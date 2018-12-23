@@ -4,11 +4,12 @@
 	"description": "my website's api",
 	"main": "index.js",
 	"scripts": {
-		"start": "node ./build/index.js",
-		"restart": "/home/deploy/npm/bin/pm2 restart all",
+		"start": "NODE_ENV=production node ./build/index.js",
+		"restart": "/home/deploy/npm/bin/pm2 /home/deploy/ecosystem.config.js --env production",
 		"dev": "NODE_ENV=development nodemon --harmony ./src/index.js --exec babel-node --presets babel-preset-env",
 		"mocha": "mocha --require ./tests/utils/test-framework.js --require ./tests/compilers/mocha --exit",
 		"test": "NODE_ENV=production npm run mocha -- ./tests/*.spec.js './tests/**/*.spec.js' --disable-log",
+		"test:dev": "NODE_ENV=development npm run mocha -- ./tests/*.spec.js './tests/**/*.spec.js' --disable-log",
 		"build": "rm -rf ./build && mkdir build && babel --out-dir ./build --source-maps --copy-files ./src",
 		"lint": "eslint src/"
 	},
