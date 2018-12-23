@@ -10,7 +10,7 @@ class DB {
 		});
 		mongoose.connection.on('disconnected', () => {
 			console.log('Disconnected from mongodb');
-		})
+		});
 		mongoose.connection.on('error', (err) => {
 			console.log('failed to connect to mongodb: ', err);
 			throw new Error(err);
