@@ -20,6 +20,7 @@
     "no-multi-spaces" : 0,
     "quotes" : [2, "single"],
 		"indent": [2, "tab"],
+		"no-tabs": 0,
 		"import/no-unresolved": 0
   }
 }
