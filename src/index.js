@@ -7,6 +7,7 @@ import router from './router';
 const port = config.PORT || 2369;
 const app = express();
 
+app.set('db', db);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
