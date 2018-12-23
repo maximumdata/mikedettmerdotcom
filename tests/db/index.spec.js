@@ -33,8 +33,9 @@ describe('Database', () => {
 	});
 
 	it('should return a connection string from getConnectString', () => {
-		let testVal = testDB.getConnectString();
-		expect(testVal).to.be.a('string');
+		testDB.setConnectString();
+		const { connectString } = testDB;
+		expect(connectString).to.be.a('string');
 	});
 
 	it('should attempt to open a connection when open() is called', async () => {
@@ -43,6 +44,7 @@ describe('Database', () => {
 	});
 
 	it('should attempt to close a connection when close() is called', async () => {
+		await testDB.open();
 		await testDB.close();
 		expect(mongooseStub.connection.close).to.be.called;
 	});
