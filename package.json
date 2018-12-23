@@ -1,6 +1,6 @@
 {
 	"name": "mikedettmerdotcom",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"description": "my website's api",
 	"main": "index.js",
 	"scripts": {
@@ -9,7 +9,8 @@
 		"dev": "NODE_ENV=development nodemon --harmony ./src/index.js --exec babel-node --presets babel-preset-env",
 		"mocha": "mocha --require ./tests/utils/test-framework.js --require ./tests/compilers/mocha --exit",
 		"test": "NODE_ENV=production npm run mocha -- ./tests/*.spec.js './tests/**/*.spec.js' --disable-log",
-		"build": "rm -rf ./build && mkdir build && babel --out-dir ./build --source-maps --copy-files ./src"
+		"build": "rm -rf ./build && mkdir build && babel --out-dir ./build --source-maps --copy-files ./src",
+		"lint": "eslint src/"
 	},
 	"repository": {
 		"type": "git",
@@ -35,8 +36,9 @@
 		"babel-preset-env": "^1.7.0",
 		"chai": "^4.1.2",
 		"chai-as-promised": "^5.1.0",
-		"eslint": "^1.7.3",
-		"eslint-config-airbnb": "^0.1.0",
+		"eslint": "^5.10.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-plugin-import": "^2.14.0",
 		"mocha": "^4.0.1",
 		"nodemon": "1.12.0",
 		"proxyquire": "^1.7.4",

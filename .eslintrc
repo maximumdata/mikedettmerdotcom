@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb/base",
+  "extends": "airbnb-base",
   "globals": {},
   "parser": "babel-eslint",
   "env" : {
@@ -19,6 +19,8 @@
     "space-before-function-paren": [0, "always"],
     "no-multi-spaces" : 0,
     "quotes" : [2, "single"],
-    "indent": [2, "tab"]
+		"indent": [2, "tab"],
+		"no-tabs": 0,
+		"import/no-unresolved": 0
   }
 }
