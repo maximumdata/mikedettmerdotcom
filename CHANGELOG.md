@@ -2,6 +2,10 @@
 #### Name Format: (Adjective) (Band)
 ##### Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
+#### v3.3.2 | Adventurous Analogue Dear
+- adds graceful shutdown flow
+- refactors DB to allow event based connect/disconnect
+
 #### v3.3.1 | Adventurous Analogue Dear
 - adds test for config
 - adjusts npm scripts to use environment.config.js in prod
