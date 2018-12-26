@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 import config from './config';
 import DB from './db';
 import router from './router';
@@ -12,6 +13,7 @@ const database = new DB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 
 app.use('/v1/', router);
 
