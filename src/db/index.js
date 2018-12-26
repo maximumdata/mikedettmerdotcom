@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import config from '../config';
+import APIError from '../utils';
 
 class DB {
 	constructor() {
@@ -12,8 +13,11 @@ class DB {
 			console.log('Disconnected from mongodb');
 		});
 		mongoose.connection.on('error', (err) => {
-			console.log('failed to connect to mongodb: ', err);
-			throw new Error(err);
+			throw new APIError({
+				error: err,
+				message: 'Failed to connect to mongodb',
+				type: 'MongoError'
+			});
 		});
 	}
 
@@ -30,7 +34,11 @@ class DB {
 			await mongoose.connect(this.connectString, { useNewUrlParser: true });
 			this.connection = mongoose.connection;
 		} catch (error) {
-			console.log('error establishing connection: ', error);
+			throw new APIError({
+				error,
+				message: 'Error establishing connection',
+				type: 'MongoError'
+			});
 		}
 	}
 
@@ -39,7 +47,11 @@ class DB {
 			try {
 				await mongoose.connection.close();
 			} catch (error) {
-				console.log('error closing connection: ', error);
+				throw new APIError({
+					error,
+					message: 'Error closing connection:',
+					type: 'MongoError'
+				});
 			}
 		}
 	}

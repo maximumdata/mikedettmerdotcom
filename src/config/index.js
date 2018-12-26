@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import APIError from '../utils';
 
 let config = {
 	parsed: {}
@@ -8,7 +9,10 @@ if (process.env.NODE_ENV !== 'production') {
 	config = dotenv.config();
 
 	if (config.error) {
-		throw new Error(config.error);
+		throw new APIError({
+			error: config.error,
+			message: 'An error occured when generating the dotenv config'
+		});
 	}
 } else {
 	config.parsed = {
