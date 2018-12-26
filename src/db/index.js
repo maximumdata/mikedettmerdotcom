@@ -12,9 +12,9 @@ class DB {
 		mongoose.connection.on('disconnected', () => {
 			console.log('Disconnected from mongodb');
 		});
-		mongoose.connection.on('error', (err) => {
+		mongoose.connection.on('error', (error) => {
 			const err = new APIError({
-				error: err,
+				error,
 				message: 'Failed to connect to mongodb',
 				type: 'MongoError'
 			});
