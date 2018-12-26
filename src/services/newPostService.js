@@ -51,17 +51,18 @@ async function getSlug(title) {
 }
 
 export async function newPostService(post) {
+	const newPost = post;
 	try {
-		post.isValid = await postValidator(post);
+		newPost.isValid = await postValidator(newPost);
 	} catch (error) {
 		throw error;
 	}
 
 	try {
-		post.slug = await getSlug(post.title);
+		newPost.slug = await getSlug(newPost.title);
 	} catch (error) {
 		throw error;
 	}
 
-	return new Posts(post);
+	return new Posts(newPost);
 }
