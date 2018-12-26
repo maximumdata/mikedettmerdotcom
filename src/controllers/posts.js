@@ -15,7 +15,7 @@ export async function getAllPublishedPosts(req, res) {
 	}).sort('-createdAt');
 
 	res.json(posts);
-};
+}
 
 export async function createNewPost(req, res) {
 	try {
@@ -59,7 +59,7 @@ export async function deletePost(req, res) {
 			}
 		});
 		res.status(200).send();
-	} catch(error) {
+	} catch (error) {
 		res.status(304).json(error);
 	}
 }
@@ -88,7 +88,6 @@ export async function addPostToReq(req, res, next) {
 			});
 			res.status(error.code).json(error);
 		}
-
 	} catch (error) {
 		res.status(500).json(error);
 	}

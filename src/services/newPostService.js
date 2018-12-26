@@ -1,9 +1,9 @@
+import slug from 'limax';
 import Posts from '../models/Posts';
 import APIError from '../utils';
-import slug from 'limax';
 
 export async function postValidator(post) {
-	let errMsgs = [];
+	const errMsgs = [];
 	if (!post.title) {
 		errMsgs.push('Title is missing');
 	}
