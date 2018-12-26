@@ -17,14 +17,14 @@ describe('APIError', () => {
 	it('should set the provided props on the object', () => {
 		const dummyProps = {
 			error: {bad_thing: true},
-			msg: 'A bad thing happened',
+			message: 'A bad thing happened',
 			type: 'BadThingError',
 			code: 420
 		};
 		const testVal = new APIError(dummyProps);
 		const { error, message, type, code } = testVal;
 		expect(error).to.eql(dummyProps.error);
-		expect(message).to.eql(dummyProps.msg);
+		expect(message).to.eql(dummyProps.message);
 		expect(type).to.eql(dummyProps.type);
 		expect(code).to.eql(dummyProps.code);
 	});
