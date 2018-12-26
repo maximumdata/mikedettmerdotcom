@@ -2,6 +2,10 @@
 #### Name Format: (Adjective) (Band)
 ##### Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
+
+#### v3.4.1 | Brave Bayside
+- adds morgan logging
+
 #### v3.4.0 | Brave Bayside
 - adds standardized error class
 - adds Posts schema/model/controller/routes
