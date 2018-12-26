@@ -44,11 +44,12 @@ SIGNALS.forEach((signal) => {
 	});
 });
 
-process.on('uncaughtException', (err) => {
-	new APIError({
-		error: err.stack || err,
+process.on('uncaughtException', (error) => {
+	const err = new APIError({
+		error: error.stack || error,
 		message: 'An uncaught exception occured'
 	});
+	throw err;
 });
 
 export default app;

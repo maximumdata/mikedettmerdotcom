@@ -13,11 +13,12 @@ class DB {
 			console.log('Disconnected from mongodb');
 		});
 		mongoose.connection.on('error', (err) => {
-			throw new APIError({
+			const err = new APIError({
 				error: err,
 				message: 'Failed to connect to mongodb',
 				type: 'MongoError'
 			});
+			throw err;
 		});
 	}
 
@@ -34,11 +35,12 @@ class DB {
 			await mongoose.connect(this.connectString, { useNewUrlParser: true });
 			this.connection = mongoose.connection;
 		} catch (error) {
-			throw new APIError({
+			const err = new APIError({
 				error,
 				message: 'Error establishing connection',
 				type: 'MongoError'
 			});
+			throw err;
 		}
 	}
 
@@ -47,11 +49,12 @@ class DB {
 			try {
 				await mongoose.connection.close();
 			} catch (error) {
-				throw new APIError({
+				const err = new APIError({
 					error,
 					message: 'Error closing connection:',
 					type: 'MongoError'
 				});
+				throw err;
 			}
 		}
 	}

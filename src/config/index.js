@@ -9,10 +9,11 @@ if (process.env.NODE_ENV !== 'production') {
 	config = dotenv.config();
 
 	if (config.error) {
-		throw new APIError({
+		const err = new APIError({
 			error: config.error,
 			message: 'An error occured when generating the dotenv config'
 		});
+		throw err;
 	}
 } else {
 	config.parsed = {
