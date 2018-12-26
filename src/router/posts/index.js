@@ -1,5 +1,7 @@
-import { getAllPublishedPosts, createNewPost, getSinglePost, updatePost, deletePost, addPostToReq} from '../../controllers/posts';
 import { Router } from 'express';
+import {
+ getAllPublishedPosts, createNewPost, getSinglePost, updatePost, deletePost, addPostToReq
+} from '../../controllers/posts';
 
 const router = Router();
 

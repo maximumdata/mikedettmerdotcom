@@ -17,7 +17,7 @@ const Posts = new Schema({
 	hidden: {
 		type: Boolean,
 		default: false
-	},
+	}
 }, { timestamps: true });
 
 export default model('Posts', Posts);
