@@ -2,6 +2,10 @@
 #### Name Format: (Adjective) (Band)
 ##### Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
+#### v3.4.0 | Brave Bayside
+- adds standardized error class
+- adds Posts schema/model/controller/routes
+
 #### v3.3.2 | Adventurous Analogue Dear
 - adds graceful shutdown flow
 - refactors DB to allow event based connect/disconnect
