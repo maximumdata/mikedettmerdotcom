@@ -1,3 +1,3 @@
 import APIError from './error';
 
-export { APIError };
+export default APIError;
