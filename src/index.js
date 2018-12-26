@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import config from './config';
 import DB from './db';
 import router from './router';
+import APIError from './utils';
 
 const port = config.PORT;
 const app = express();
@@ -43,8 +44,12 @@ SIGNALS.forEach((signal) => {
 	});
 });
 
-process.on('uncaughtException', (err) => {
-	console.info('Uncaught Exception: ', err.stack || err);
+process.on('uncaughtException', (error) => {
+	const err = new APIError({
+		error: error.stack || error,
+		message: 'An uncaught exception occured'
+	});
+	throw err;
 });
 
 export default app;
