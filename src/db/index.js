@@ -32,7 +32,7 @@ class DB {
 
 	async open() {
 		try {
-			await mongoose.connect(this.connectString, { useNewUrlParser: true });
+			await mongoose.connect(this.connectString, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 			this.connection = mongoose.connection;
 		} catch (error) {
 			const err = new APIError({

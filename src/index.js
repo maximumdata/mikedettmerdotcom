@@ -28,11 +28,15 @@ async function chainDisconnect(cb) {
 }
 
 function gracefulShutdown() {
-	console.info('Graceful shutdown initiated');
-	chainDisconnect(() => {
-		console.info(`Connections closed: EXITING ${new Date().toISOString()}`);
+	if (process.env.NODE_ENV !== 'development') {
+		console.info('Graceful shutdown initiated');
+		chainDisconnect(() => {
+			console.info(`Connections closed: EXITING ${new Date().toISOString()}`);
+			process.exit();
+		});
+	} else {
 		process.exit();
-	});
+	}
 }
 
 const SIGNALS = ['SIGINT', 'SIGTERM'];
@@ -49,7 +53,7 @@ process.on('uncaughtException', (error) => {
 		error: error.stack || error,
 		message: 'An uncaught exception occured'
 	});
-	throw err;
+	console.log(err);
 });
 
 export default app;

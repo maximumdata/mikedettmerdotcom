@@ -1,9 +1,9 @@
 class APIError {
 	constructor({
-		error = {}, msg = 'An error occured on the API server', type = 'ServerError', code = 500
+		error = {}, message = 'An error occured on the API server', type = 'ServerError', code = 500
 	} = {}) {
 		this.error = error;
-		this.message = msg;
+		this.message = message;
 		this.type = type;
 		this.code = code;
 		this.logSelf();
