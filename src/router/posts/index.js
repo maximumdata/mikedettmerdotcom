@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 // probably not needed anymore
-router.get('/', getAllPublishedPosts);
+router.get('/', getPostsByPage);
 
 // needs auth
 router.post('/', createNewPost);
@@ -23,6 +23,6 @@ router.patch('/:id', addPostToReq, updatePost);
 router.get('/:id', addPostToReq, getSinglePost);
 
 // paginated routes
-router.use('/page/:page', getPostsByPage);
+// router.use('/page/:page', getPostsByPage);
 
 export default router;
