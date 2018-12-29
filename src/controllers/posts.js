@@ -93,7 +93,7 @@ export async function addPostToReq(req, res, next) {
 	}
 }
 
-export async function getPostsByPage(req, res, next) {
+export async function getPostsByPage(req, res) {
 	try {
 		const { page } = req.params;
 		const posts = await Posts.paginate({}, {
