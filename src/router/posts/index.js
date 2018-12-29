@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 // probably not needed anymore
-// router.get('/', getAllPublishedPosts);
+router.get('/', getAllPublishedPosts);
 
 // needs auth
 router.post('/', createNewPost);
