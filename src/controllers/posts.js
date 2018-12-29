@@ -92,3 +92,28 @@ export async function addPostToReq(req, res, next) {
 		res.status(500).json(error);
 	}
 }
+
+export async function getPostsByPage(req, res, next) {
+	try {
+		const { page } = req.params;
+		const posts = await Posts.paginate({}, {
+			page,
+			limit: 5,
+			sort: {
+				createdAt: -1
+			},
+			customLabels: {
+				docs: 'posts'
+			}
+		});
+		res.json(posts);
+	} catch (error) {
+		const err = new APIError({
+			error,
+			message: 'Error getting paginated results',
+			type: 'PaginationError',
+			code: 500
+		});
+		res.status(err.code).json(err);
+	}
+}
