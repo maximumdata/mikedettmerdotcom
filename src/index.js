@@ -59,3 +59,10 @@ process.on('uncaughtException', (error) => {
 });
 
 export default app;
+
+import { verifyToken } from './services/userService';
+
+(async () => {
+	const toke = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJvayIsImlhdCI6MTU0NjEyODM2NiwiZXhwIjoxNTQ2MjE0NzY2fQ.Q-JLBnB-BQlI5CmnF6UqZzaEuHNqiHvAlwnd16pO9IE'
+	console.log(await verifyToken(toke));
+})()

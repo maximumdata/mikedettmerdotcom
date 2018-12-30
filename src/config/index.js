@@ -23,7 +23,8 @@ if (process.env.NODE_ENV !== 'production') {
 		DB_URL: process.env.DB_URL,
 		DB_NAME: process.env.DB_NAME,
 		DB_PROTOCOL: process.env.DB_PROTOCOL,
-		API_VERSION: process.env.API_VERSION
+		API_VERSION: process.env.API_VERSION,
+		JWT_SECRET: process.env.JWT_SECRET
 	};
 }
 
