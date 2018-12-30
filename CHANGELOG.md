@@ -1,7 +1,11 @@
 ### mikedettmerdotcom API
 #### Name Format: (Adjective) (Band)
-##### Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
+Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
+#### v3.5.0 | Choosey Chiodos
+- adds pagination routes
+- adds authentication
+- ready to start on the front end! woo!
 
 #### v3.4.1 | Brave Bayside
 - adds morgan logging
