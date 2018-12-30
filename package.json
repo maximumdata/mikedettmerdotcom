@@ -24,9 +24,11 @@
 	},
 	"homepage": "https://github.com/maximumdata/mikedettmerdotcom#readme",
 	"dependencies": {
+		"bcrypt": "^3.0.3",
 		"body-parser": "^1.18.3",
 		"dotenv": "^6.2.0",
 		"express": "^4.16.4",
+		"jsonwebtoken": "^8.4.0",
 		"limax": "^1.7.0",
 		"mongoose": "^5.4.0",
 		"mongoose-paginate-v2": "^1.0.13",
