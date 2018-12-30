@@ -95,7 +95,12 @@ export async function addPostToReq(req, res, next) {
 
 export async function getPostsByPage(req, res) {
 	try {
-		const { page } = req.params;
+		let { page } = req.query;
+		if (!page || Number.isNaN(Number(page))) {
+			page = 1;
+		} else {
+			page = Number(page);
+		}
 		const posts = await Posts.paginate({}, {
 			page,
 			limit: 5,
