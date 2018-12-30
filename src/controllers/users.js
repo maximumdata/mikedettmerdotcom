@@ -36,47 +36,6 @@ export async function registerUser(req, res) {
 	}
 }
 
-export async function getUserIdFromToken(req, res, next) {
-	const token = req.headers['x-access-token'];
-
-	if(!token) {
-		const err = new APIError({
-			error: { auth: false, message: 'No token provided' },
-			message: 'No token provided',
-			type: 'TokenError',
-			code: 401
-		});
-		return res.status(err.code).json(err);
-	}
-
-	try {
-		const decoded = await userService.verifyToken(token);
-		req.token = decoded;
-		next();
-	} catch (error) {
-		const err = new APIError({
-			error,
-			message: 'Error decoding token',
-		});
-		return res.status(err.code).json(err);
-	}
-}
-
-export async function getUserFromId(req, res) {
-	try {
-		const user = await Users.findById(req.token._id, { password: 0 });
-		res.json(user);
-	} catch (error) {
-		const err = new APIError({
-			error,
-			message: 'Error looking up user from Id',
-			type: 'MongoError'
-		});
-		res.status(err.code).json(err);
-	}
-
-}
-
 export async function loginUser(req, res) {
 	try {
 		const user = await Users.findOne({ username: req.body.username });
@@ -132,8 +91,7 @@ export async function verifyAuth(req, res, next) {
 			return res.status(err.code).json(err);
 		}
 		try {
-			const decoded = await userService.verifyToken(token);
-			req.userId = decoded._id;
+			await userService.verifyToken(token);
 			next();
 		} catch (error) {
 			const err = new APIError({
