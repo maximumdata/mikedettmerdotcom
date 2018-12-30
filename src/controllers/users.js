@@ -1,9 +1,14 @@
-import userService from '../services/userService';
+import {
+	hashPassword,
+	getSignedToken,
+	comparePasswords,
+	verifyToken
+} from '../services/userService';
 import Users from '../models/Users';
 import APIError from '../utils';
 
 export async function registerUser(req, res) {
-	const hashedPass = await userService.hashPassword(req.body.password);
+	const hashedPass = await hashPassword(req.body.password);
 
 	try {
 		const count = await Users.countDocuments({});
@@ -16,7 +21,7 @@ export async function registerUser(req, res) {
 			message: 'Error getting users count',
 			type: 'MongoError'
 		});
-		res.status(err.code).json(err);
+		return res.status(err.code).json(err);
 	}
 
 	try {
@@ -24,15 +29,15 @@ export async function registerUser(req, res) {
 			username: req.body.username,
 			password: hashedPass
 		});
-		const token = await userService.getSignedToken(user._id);
-		res.json({ auth: true, token });
+		const token = await getSignedToken(user._id);
+		return res.json({ auth: true, token });
 	} catch (error) {
 		const err = new APIError({
 			error,
 			message: 'Error creating new user',
 			type: 'MongoError'
 		});
-		res.status(err.code).json(err);
+		return res.status(err.code).json(err);
 	}
 }
 
@@ -49,7 +54,7 @@ export async function loginUser(req, res) {
 			return res.status(err.code).json(err);
 		}
 		try {
-			const validPass = await userService.comparePasswords(req.body.password, user.password);
+			const validPass = await comparePasswords(req.body.password, user.password);
 			if (!validPass) {
 				const err = new APIError({
 					error: {},
@@ -59,7 +64,7 @@ export async function loginUser(req, res) {
 				});
 				return res.status(err.code).json(err);
 			}
-			const token = await userService.getSignedToken(user._id);
+			const token = await getSignedToken(user._id);
 			res.json({ auth: true, token});
 		} catch (error) {
 			const err = new APIError({
@@ -74,7 +79,7 @@ export async function loginUser(req, res) {
 			error,
 			message: 'Error logging in user'
 		});
-		res.status(err.code).json(err);
+		return res.status(err.code).json(err);
 	}
 }
 
@@ -91,20 +96,20 @@ export async function verifyAuth(req, res, next) {
 			return res.status(err.code).json(err);
 		}
 		try {
-			await userService.verifyToken(token);
-			next();
+			await verifyToken(token);
+			return next();
 		} catch (error) {
 			const err = new APIError({
 				error,
 				messsage: 'Error verifying token'
 			});
-			res.status(err.code).json(err);
+			return res.status(err.code).json(err);
 		}
 	} catch (error) {
 		const err = new APIError({
 			error,
 			message: 'Error verifying auth'
 		});
-		res.status(err.code).json(err);
+		return res.status(err.code).json(err);
 	}
 }

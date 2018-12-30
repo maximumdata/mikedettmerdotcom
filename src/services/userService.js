@@ -3,15 +3,15 @@ import bcrypt from 'bcrypt';
 import config from '../config';
 
 export async function hashPassword(password) {
-	return await bcrypt.hash(password, 10);
+	return bcrypt.hash(password, 10);
 }
 
 export async function comparePasswords(postedPass, userPass) {
-	return await bcrypt.compare(postedPass, userPass);
+	return bcrypt.compare(postedPass, userPass);
 }
 
 export async function getSignedToken(_id) {
-	return await jsonwebtoken.sign({ _id }, config.JWT_SECRET, {
+	return jsonwebtoken.sign({ _id }, config.JWT_SECRET, {
 		expiresIn: 86400
 	});
 }
