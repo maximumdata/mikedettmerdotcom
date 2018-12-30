@@ -60,7 +60,7 @@ export async function loginUser(req, res) {
 				return res.status(err.code).json(err);
 			}
 			const token = await userService.getSignedToken(user._id);
-			res.json({ auth: true, token});
+			res.json({ auth: true, token });
 		} catch (error) {
 			const err = new APIError({
 				error,
