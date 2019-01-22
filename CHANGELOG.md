@@ -2,6 +2,11 @@
 #### Name Format: (Adjective) (Band)
 Rules: Only move to a band of the next letter of the alphabet on at least a minor version. Patches should retain their current name.
 
+#### v3.5.1 | Choosey Chiodos
+- updates admin routes for posts
+- update get single post to use a slug instead of id
+- changes deemed necessary after working on the frontend
+
 #### v3.5.0 | Choosey Chiodos
 - adds pagination routes
 - adds authentication
