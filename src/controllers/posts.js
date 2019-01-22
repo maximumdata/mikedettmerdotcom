@@ -66,7 +66,7 @@ export async function deletePost(req, res) {
 
 export async function addPostToReq(req, res, next) {
 	try {
-		const postBySlug = await Posts.find({ slug: req.params.slug }, (err) => {
+		const postBySlug = await Posts.findOne({ slug: req.params.slug }, (err) => {
 			if (err) {
 				const error = new APIError({
 					error: err,
