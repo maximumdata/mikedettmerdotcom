@@ -15,11 +15,11 @@ const router = Router();
 router.get('/', getPostsByPage);
 
 // needs auth
-router.post('/', verifyAuth, createNewPost);
-router.delete('/:id', verifyAuth, addPostToReq, deletePost);
-router.patch('/:id', verifyAuth, addPostToReq, updatePost);
+router.post('/admin', verifyAuth, createNewPost);
+router.delete('/admin/:id', verifyAuth, deletePost);
+router.put('/admin/:id', verifyAuth, updatePost);
 
 // specific post routes
-router.get('/:id', addPostToReq, getSinglePost);
+router.get('/:slug', addPostToReq, getSinglePost);
 
 export default router;
