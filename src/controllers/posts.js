@@ -39,7 +39,7 @@ export async function updatePost(req, res) {
 	const { body: post } = req;
 	try {
 		post.isValid = await postValidator(post);
-		const updatedPost = await Posts.findByIdAndUpdate(req.post._id, post, { new: true });
+		const updatedPost = await Posts.findByIdAndUpdate(req.params.id, post, { new: true });
 		res.json(updatedPost);
 	} catch (error) {
 		res.status(500).json(error);
@@ -48,11 +48,11 @@ export async function updatePost(req, res) {
 
 export async function deletePost(req, res) {
 	try {
-		await Posts.deleteOne({ _id: req.post._id }, (err) => {
+		await Posts.deleteOne({ _id: req.params.id }, (err) => {
 			if (err) {
 				const error = new APIError({
 					error: err,
-					message: `Error deleting post with _id of ${req.post._id}`,
+					message: `Error deleting post with slug of ${req.post.slug}`,
 					type: 'MongoError'
 				});
 				throw error;
@@ -66,23 +66,23 @@ export async function deletePost(req, res) {
 
 export async function addPostToReq(req, res, next) {
 	try {
-		const postById = await Posts.findById(req.params.id, (err) => {
+		const postBySlug = await Posts.find({ slug: req.params.slug }, (err) => {
 			if (err) {
 				const error = new APIError({
 					error: err,
-					message: `Error finding post with _id of ${req.params.id}`,
+					message: `Error finding post with slug of ${req.params.slug}`,
 					type: 'MongoError'
 				});
 				throw error;
 			}
 		});
 
-		if (postById) {
-			req.post = postById;
+		if (postBySlug) {
+			req.post = postBySlug;
 			next();
 		} else {
 			const error = new APIError({
-				message: `No post with the _id ${req.params.id} found`,
+				message: `No post with the slug ${req.params.slug} found`,
 				type: 'ClientError',
 				code: 404
 			});
